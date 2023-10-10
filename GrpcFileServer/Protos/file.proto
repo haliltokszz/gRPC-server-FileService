@@ -6,9 +6,9 @@ package file;
 import "google/protobuf/empty.proto"; //Geriye dönüþ deðeri olmayan metotlar için kullanýyoruz.
 
 service FileService {
-    rpc FileDownLoad (FileInfo) returns (stream BytesContent);
-    rpc FileUpLoad (stream BytesContent) returns(google.protobuf.Empty); //Geriye Empty dönüyor, yani dönüþ deðeri yok gibi düþünülebilir.
-    rpc GetFilePath (FileInfo) returns (FilePath);
+    rpc FileDownLoad (FileInfo) returns (stream BytesContent); //server streaming
+    rpc FileUpLoad (stream BytesContent) returns(google.protobuf.Empty); //client streaming
+    rpc GetFilePath (FileInfo) returns (FilePath); //unary
 }
 
 message FileInfo{
